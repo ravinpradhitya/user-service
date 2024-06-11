@@ -20,7 +20,7 @@ public class StudentController {
     }
 
     @GetMapping("/getStudentById/{id}")
-    public Student fetchDetailsById(@PathVariable int id){
+    public Student fetchDetailsById(@PathVariable String id){
         return studentService.getStudentDetailsById(id);
     }
 
@@ -37,7 +37,7 @@ public class StudentController {
     }
 
     @DeleteMapping("/deleteStudent/{id}")
-    public String deleteFunction(@PathVariable int id)
+    public String deleteFunction(@PathVariable String id)
     {
         return studentService.deleteStudent(id);
     }

@@ -13,9 +13,8 @@ import lombok.NoArgsConstructor;
 public class Student {
 
     @Id
-    @Column(name = "ID")
-//    @GeneratedValue
-    private int id;
+    @Column(name = "NISN", length = 10)
+    private String id;
 
     @Column(name = "EMAIL")
     private String studentEmail;
@@ -25,10 +24,4 @@ public class Student {
 
     @Column(name = "ADDRESS")
     private String studentAddress;
-
-    @Column(name = "DEPARTMENT")
-    private String studentDepartment;
-
-    @Column(name = "CLASS")
-    private String studentClass;
 }

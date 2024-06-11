@@ -17,7 +17,7 @@ public class TeacherService {
         return teacherRepo.save(teacher);
     }
 
-    public Teacher getTeacherDetailsById(int id)
+    public Teacher getTeacherDetailsById(String id)
     {
         return teacherRepo.findById(id).orElse(null);
     }
@@ -36,14 +36,13 @@ public class TeacherService {
             updateTeacher.setTeacherEmail(teacher.getTeacherEmail());
             updateTeacher.setTeacherName(teacher.getTeacherName());
             updateTeacher.setTeacherAddress(teacher.getTeacherAddress());
-            updateTeacher.setTeacherClass(teacher.getTeacherClass());
             teacherRepo.save(updateTeacher);
             return updateTeacher;
         }
         return null;
     }
 
-    public String deleteTeacher(int id){
+    public String deleteTeacher(String id){
         if(teacherRepo.existsById(id)){
             teacherRepo.deleteById(id);
             return "deleted "+id;

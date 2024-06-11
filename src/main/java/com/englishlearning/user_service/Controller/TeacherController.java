@@ -20,7 +20,7 @@ public class TeacherController {
     }
 
     @GetMapping("/getTeacherById/{id}")
-    public Teacher fetchDetailsById(@PathVariable int id){
+    public Teacher fetchDetailsById(@PathVariable String id){
         return teacherService.getTeacherDetailsById(id);
     }
 
@@ -37,7 +37,7 @@ public class TeacherController {
     }
 
     @DeleteMapping("/deleteTeacher/{id}")
-    public String deleteFunction(@PathVariable int id)
+    public String deleteFunction(@PathVariable String id)
     {
         return teacherService.deleteTeacher(id);
     }

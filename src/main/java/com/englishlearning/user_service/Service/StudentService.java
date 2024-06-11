@@ -18,7 +18,7 @@ public class StudentService {
         return studentRepo.save(student);
     }
 
-    public Student getStudentDetailsById(int id)
+    public Student getStudentDetailsById(String id)
     {
         return studentRepo.findById(id).orElse(null);
     }
@@ -37,15 +37,13 @@ public class StudentService {
             updateStudent.setStudentEmail(student.getStudentEmail());
             updateStudent.setStudentName(student.getStudentName());
             updateStudent.setStudentAddress(student.getStudentAddress());
-            updateStudent.setStudentDepartment(student.getStudentDepartment());
-            updateStudent.setStudentClass(student.getStudentClass());
             studentRepo.save(updateStudent);
             return updateStudent;
         }
         return null;
     }
 
-    public String deleteStudent(int id){
+    public String deleteStudent(String id){
         if(studentRepo.existsById(id)){
             studentRepo.deleteById(id);
             return "deleted "+id;
