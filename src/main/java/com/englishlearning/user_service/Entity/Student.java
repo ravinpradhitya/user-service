@@ -24,4 +24,8 @@ public class Student {
 
     @Column(name = "ADDRESS")
     private String studentAddress;
+
+    @ManyToOne
+    @JoinColumn(name = "SCHOOL_ID")
+    private School school;
 }

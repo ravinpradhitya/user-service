@@ -24,4 +24,8 @@ public class Teacher {
 
     @Column(name = "ADDRESS")
     private String teacherAddress;
+
+    @ManyToOne
+    @JoinColumn(name = "SCHOOL_ID")
+    private School school;
 }

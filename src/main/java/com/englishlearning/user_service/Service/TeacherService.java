@@ -1,6 +1,7 @@
 package com.englishlearning.user_service.Service;
 
 import com.englishlearning.user_service.Entity.Teacher;
+import com.englishlearning.user_service.Repository.SchoolRepo;
 import com.englishlearning.user_service.Repository.TeacherRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,13 @@ public class TeacherService {
     @Autowired
     private TeacherRepo teacherRepo;
 
+    @Autowired
+    private SchoolRepo schoolRepo;
+
     public Teacher saveDetails(Teacher teacher){
+        if (teacher.getSchool() != null) {
+            schoolRepo.findById(teacher.getSchool().getId()).orElseThrow(() -> new RuntimeException("School not found"));
+        }
         return teacherRepo.save(teacher);
     }
 
@@ -36,6 +43,7 @@ public class TeacherService {
             updateTeacher.setTeacherEmail(teacher.getTeacherEmail());
             updateTeacher.setTeacherName(teacher.getTeacherName());
             updateTeacher.setTeacherAddress(teacher.getTeacherAddress());
+            updateTeacher.setSchool(teacher.getSchool());
             teacherRepo.save(updateTeacher);
             return updateTeacher;
         }

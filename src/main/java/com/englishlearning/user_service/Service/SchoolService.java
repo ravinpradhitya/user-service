@@ -1,6 +1,7 @@
 package com.englishlearning.user_service.Service;
 
 import com.englishlearning.user_service.Entity.School;
+import com.englishlearning.user_service.Entity.Student;
 import com.englishlearning.user_service.Repository.SchoolRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,9 +31,8 @@ public class SchoolService {
     public School updateDetail(School school){
 
         School updateSchool=schoolRepo.findById(school.getId()).orElse(null);
-        if(updateSchool!=null)
+        if(updateSchool !=null)
         {
-
             updateSchool.setSchoolEmail(school.getSchoolEmail());
             updateSchool.setSchoolName(school.getSchoolName());
             updateSchool.setSchoolAddress(school.getSchoolAddress());
@@ -54,5 +54,14 @@ public class SchoolService {
     public List<School> saveListDetails(List<School> schools)
     {
         return schoolRepo.saveAll(schools);
+    }
+
+    public List<Student> getStudentsBySchoolId(int id) {
+        School school = schoolRepo.findById(id).orElse(null);
+        if (school != null) {
+            return school.getStudents();
+        } else {
+            return null;
+        }
     }
 }
